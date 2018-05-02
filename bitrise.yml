@@ -77,8 +77,8 @@ workflows:
     envs:
       # if you want to share this step into a bitrise-steplib
       - BITRISE_STEP_ID: post-jira-comment-with-build-details
-      - BITRISE_STEP_GIT_CLONE_URL: https://github.com/bitrise-steplib/steps-post-jira-comment-with-build-details
-      - MY_bitrise-steplib_REPO_FORK_GIT_URL: $MY_bitrise-steplib_REPO_FORK_GIT_URL
+      - BITRISE_STEP_GIT_CLONE_URL: https://github.com/bitrise-steplib/steps-post-jira-comment-with-build-details.git
+      - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
       - BITRISE_STEP_VERSION: $BITRISE_STEP_VERSION
     description: |-
       If this is the first time you try to share a Step you should
@@ -91,7 +91,7 @@ workflows:
       bitrise-steplib you want to share this step into. Once you're done with forking
       the repository you should set your own fork's git clone URL
       in the `.bitrise.secrets.yml` file, or here in the `envs` section,
-      as the value of the `MY_bitrise-steplib_REPO_FORK_GIT_URL` environment.
+      as the value of the `MY_STEPLIB_REPO_FORK_GIT_URL` environment.
 
       You're now ready to share this Step, just make sure that
       the `BITRISE_STEP_ID` and `BITRISE_STEP_VERSION`
@@ -109,6 +109,6 @@ workflows:
         - content: |-
             #!/bin/bash
             set -ex
-            bitrise share start -c "${MY_bitrise-steplib_REPO_FORK_GIT_URL}"
+            bitrise share start -c "${MY_STEPLIB_REPO_FORK_GIT_URL}"
             bitrise share create --stepid "${BITRISE_STEP_ID}" --tag "${BITRISE_STEP_VERSION}" --git "${BITRISE_STEP_GIT_CLONE_URL}"
             bitrise share finish
